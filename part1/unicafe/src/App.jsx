@@ -12,11 +12,15 @@ function App() {
     setGood(good + 1);
   };
   const increaseNeural = () => {
-    setNeutral(neutral+ 1);
+    setNeutral(neutral + 1);
   };
   const increaseBad = () => {
     setBad(bad + 1);
   };
+
+  const all = good + neutral + bad;
+  const average = (good - bad) / all || 0;
+  const positive = (good / all) * 100 || 0;
   return (
     <>
       <div>
@@ -28,6 +32,9 @@ function App() {
         <p>good {good}</p>
         <p>neutral{neutral}</p>
         <p>bad {bad}</p>
+        <p>all {all}</p>
+        <p>average {average}</p>
+        <p>positive {positive}%</p>
       </div>
     </>
   );
