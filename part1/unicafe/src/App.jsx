@@ -15,6 +15,13 @@ function App() {
   const increaseBad = () => {
     setBad(bad + 1);
   };
+  const StatisticLine = ({ text, value }) => {
+    return (
+      <p>
+        {text} {value}
+      </p>
+    );
+  };
 
   const Statistics = ({ good, neutral, bad }) => {
     if (good == 0 && neutral == 0 && bad == 0)
@@ -24,12 +31,12 @@ function App() {
     const positive = (good / all) * 100 || 0;
     return (
       <div>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {all}</p>
-        <p>average {average}</p>
-        <p>positive {positive}%</p>
+        <StatisticLine text="good" value={good} />
+        <StatisticLine text="neutral" value={neutral} />
+        <StatisticLine text="bad" value={bad} />
+        <StatisticLine text="all" value={all} />
+        <StatisticLine text="average" value={average} />
+        <StatisticLine text="positive" value={positive} />
       </div>
     );
   };
