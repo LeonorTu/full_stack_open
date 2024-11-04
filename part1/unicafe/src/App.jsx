@@ -17,9 +17,10 @@ function App() {
   };
   const StatisticLine = ({ text, value }) => {
     return (
-      <p>
-        {text} {value}
-      </p>
+      <tr>
+        <td>{text}</td>
+        <td>{text === "positive" ? `${value}%` : value}</td>
+      </tr>
     );
   };
 
@@ -31,12 +32,16 @@ function App() {
     const positive = (good / all) * 100 || 0;
     return (
       <div>
-        <StatisticLine text="good" value={good} />
-        <StatisticLine text="neutral" value={neutral} />
-        <StatisticLine text="bad" value={bad} />
-        <StatisticLine text="all" value={all} />
-        <StatisticLine text="average" value={average} />
-        <StatisticLine text="positive" value={positive} />
+        <table>
+          <tbody>
+            <StatisticLine text="good" value={good} />
+            <StatisticLine text="neutral" value={neutral} />
+            <StatisticLine text="bad" value={bad} />
+            <StatisticLine text="all" value={all} />
+            <StatisticLine text="average" value={average.toFixed(1)} />
+            <StatisticLine text="positive" value={positive.toFixed(1)} />
+          </tbody>
+        </table>
       </div>
     );
   };
