@@ -1,4 +1,4 @@
-const Person = ({ persons, search }) => {
+const Persons = ({ persons, search }) => {
   const filteredPersons = persons.filter((person) =>
     person.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -14,4 +14,4 @@ const Person = ({ persons, search }) => {
   );
 };
 
-export default Person;
+export default Persons;
