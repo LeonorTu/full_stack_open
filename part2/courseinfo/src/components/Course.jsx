@@ -20,11 +20,23 @@ const Part = ({ part }) => {
   );
 };
 
+const Sum = ({ parts }) => {
+  return (
+    <h3>
+      {`total of ${parts.reduce(
+        (total, part) => (total += part.exercises),
+        0
+      )} exercises`}
+    </h3>
+  );
+};
+
 const Course = ({ course }) => {
   return (
     <div>
       <Header course={course} />
       <Content parts={course.parts} />
+      <Sum parts={course.parts} />
     </div>
   );
 };
