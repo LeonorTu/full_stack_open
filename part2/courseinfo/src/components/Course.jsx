@@ -31,12 +31,22 @@ const Sum = ({ parts }) => {
   );
 };
 
-const Course = ({ course }) => {
+const CourseInfo = ({ course }) => {
   return (
     <div>
       <Header course={course} />
       <Content parts={course.parts} />
       <Sum parts={course.parts} />
+    </div>
+  );
+};
+
+const Course = ({ courses }) => {
+  return (
+    <div>
+      {courses.map((course) => (
+        <CourseInfo key={course.id} course={course} />
+      ))}
     </div>
   );
 };
