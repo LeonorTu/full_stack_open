@@ -18,16 +18,29 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault();
-    if (persons.find((person) => person.name === newName)) {
-      alert(`${newName} is already added to phonebook`);
+    const person = persons.find((person) => person.name === newName);
+    const newPerson = { name: newName, number: newNumber };
+    if (person) {
+      if (
+        window.confirm(
+          `${newName} is already added to phonebook, replace the old number with a new one?`
+        )
+      ) {
+        phonebookService.update(person.id, newPerson).then((returnedPerson) => {
+          setPersons(
+            persons.map((person) =>
+              person.id === returnedPerson.id ? returnedPerson : person
+            )
+          );
+        });
+      }
     } else {
-      const newPerson = { name: newName, number: newNumber };
       phonebookService.create(newPerson).then((returnedPhonebook) => {
         setPersons(persons.concat(returnedPhonebook));
-        setNewName('');
-        setNewNumber('');
       });
     }
+    setNewName('');
+    setNewNumber('');
   };
 
   const handleNameChange = (event) => {
