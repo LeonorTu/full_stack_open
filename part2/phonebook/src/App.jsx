@@ -42,6 +42,15 @@ const App = () => {
     setNewSearch(event.target.value);
   };
 
+  const deletePerson = (id) => {
+    const person = persons.find((person) => person.id === id);
+    if (window.confirm(`Delete ${person.name} ?`)) {
+      phonebookService.remove(id).then(() => {
+        setPersons(persons.filter((person) => person.id !== id));
+      });
+    }
+  };
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -55,7 +64,11 @@ const App = () => {
         numberHandler={handleNumberChange}
       />
       <h2>Numbers</h2>
-      <Persons persons={persons} search={newSearch} />
+      <Persons
+        persons={persons}
+        search={newSearch}
+        deleteHandler={deletePerson}
+      />
     </div>
   );
 };
