@@ -5,7 +5,7 @@ const Persons = ({ persons, search }) => {
   return (
     <div>
       {filteredPersons.map((person) => (
-        <p key={person.name}>
+        <p key={person.id}>
           {person.name} {person.number}
           <br />
         </p>
